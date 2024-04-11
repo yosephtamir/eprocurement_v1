@@ -1,0 +1,26 @@
+{% extends "proforma/common.html" %}
+{% block content %}
+<article class="media content-section">
+    <div class="media-body">
+    <div class="article-metadata">
+        <a class="mr-2" href="#">{{ object.user.first_name }} {{ object.user.last_name }}</a>
+        <small class="text-muted"> <p> {{ object.user.email}} </p></small>
+    </div>
+    <h2><a class="article-title" href="#">Business Details</a></h2>
+    <div class="about">
+        <div class="overview">
+            <h3 class="point">Region</h3>
+            <a id="sublink" href="tel:{{ current_user.phonenumber }}"><h4 class="subtitle">{{ object.region }}</h4></a>
+        </div>
+        <div class="overview">
+            <h3 class="point">Subcity</h3>
+            <a id="sublink" href="mailto:{{ current_user.email }}"><h4 class="subtitle">{{ object.subcity }}</h4></a>
+        </div>
+        <div class="overview">
+            <h3 class="point">TIN</h3>
+            <a id="sublink" href="mailto:{{ current_user.email }}"><h4 class="subtitle">{{ object.TIN }}</h4></a>
+        </div>
+    </div>
+    </div>
+</article>
+{% endblock content %}
