@@ -1,0 +1,139 @@
+{% extends "proforma/common.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>Requestion Details</h5>
+                <p class="mb-0"> {{ objs.details }}</p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box">
+                <p><b>Title:</b> {{ objs.title }}</p>
+                <p><b>Location:</b> {{ objs.location }}</p>
+                <p><b>Unit:</b> {{ objs.unit }}</p>
+                <p><b>Quantity:</b> {{ objs.quantity }} </p>
+                <p><b>Uploaaded at:</b> {{ objs.updated_at|date:"F d, Y"}} </p>
+                <p><b>Expires on:</b> {{ objs.expirey_date|date:"F d, Y" }}</p>
+            </div><!-- / project-info-box -->
+
+<!-- / project-info-box -->
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img src="{{ objs.image.url }}" alt="project-image" class="rounded">
+            <div class="project-info-box">
+                <p><b>Category:</b> {{ objs.category }}</p>
+                <p><b>Sub-Category:</b> {{ objs.subcategory }}</p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+    </div>
+</div>
+
+
+<!-- Bid List Tble -->
+
+<div class="container">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>User</th>
+              <th>Email</th>
+              <th>Price</th>
+              <th>Submitted on</th>
+              <th>Table heading</th>
+            </tr>
+          </thead>
+          <tbody id="myTable">
+            <tr>
+              <td>1</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr class="success">
+              <td>5</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+             <tr>
+              <td>8</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+              <td>Table cell</td>
+            </tr>
+          </tbody>
+        </table>   
+      </div>
+      <div class="col-md-12 text-center">
+      <ul class="pagination pagination-lg pager" id="myPager"></ul>
+      </div>
+	</div>
+</div>
+{% endblock content %}

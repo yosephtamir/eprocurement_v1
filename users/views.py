@@ -9,7 +9,6 @@ from django.contrib import messages
 from .models import BusinessInfo
 from .forms import (UserRegisterForm, ProfileUpdateForm, 
                     UserUpdateForm, BusinessRegistrationForm)
-
 # Create your views here.
 
 def register(request):
@@ -39,11 +38,12 @@ def profile(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
-
-
+        curr_user = request.user
+        mybusiness = BusinessInfo.objects.filter(user=curr_user).all()
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'mybusiness': mybusiness
     }
 
     return render(request, 'users/profile.html', context)

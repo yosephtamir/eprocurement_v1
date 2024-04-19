@@ -1,0 +1,32 @@
+{% extends "proforma/common.html" %}
+{% block content %}
+
+
+<section class="section-50">
+    <div class="container">
+        <h3 class="m-b-50 heading-line">Notifications <i class="fa fa-bell text-muted"></i></h3>
+
+        <div class="notification-ui_dd-content">
+            {% for expired in requestion %}
+            <div class="notification-list notification-list--unread">
+                <div class="notification-list_content">
+                    <div class="notification-list_img">
+                        <img src=" {{ expired.image.url }} " alt="user">
+                    </div>
+                    <div class="notification-list_detail">
+                        <a href=" {% url 'expiredrequestiondetails' pk=expired.id %}"><p><b> {{ expired.title }} </b> </a> expired</p>
+                        <p class="text-muted">{{ expired.details|truncatechars:47 }}</p>
+                        <p class="text-muted"><small> {{ expired.expirey_date }} </small></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        <div class="text-center">
+            <a href="#!" class="dark-link">Load more activity</a>
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock content %}

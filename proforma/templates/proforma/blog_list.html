@@ -1,0 +1,34 @@
+{% extends "proforma/common.html" %}
+{% block othercontent %}
+
+    <!-- ======= Recent Blog Posts Section ======= -->
+    <section id="recent-blog-posts" class="recent-blog-posts">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Blog</h2>
+          <p>Recent posts from our Blog</p>
+        </div>
+
+        <div class="row">
+
+          {% for blog in blogs %}
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="post-box">
+              <div class="post-img"><img src="{{ blog.img.url }}" class="img-fluid" alt=""></div>
+              <div class="meta">
+                <span class="post-date">{{ blog.date_posted|date:"F d, Y" }}</span>
+                <span class="post-author"> {{ blog.author.first_name }} </span>
+              </div>
+              <h3 class="post-title"> {{ blog.title }} </h3>
+              <p>{{ blog.content|truncatechars:180 }}</p>
+              <a href="{% url 'blogdetails' pk=blog.id %}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          {% endfor %}
+    </section><!-- End Recent Blog Posts Section -->
+
+
+{% endblock othercontent %}

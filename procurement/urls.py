@@ -21,18 +21,24 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from users import views as user_views
 from requestion import views as req_views
+from proforma import views as pro_views
 
 urlpatterns = [
+    path('Home/', pro_views.Home.as_view(), name='Home'),
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', user_views.profile, name='profile'),
-    
+    path('blog/', pro_views.Home.as_view(), name='blog'),
+    path('blog/<int:pk>/', pro_views.BlogDetail.as_view(), name='blogdetails'),
+    path('notifications/', pro_views.Notifications_list.as_view(), name='notificationslist'),
     path('requestion/', req_views.RequestionList.as_view(), name='requestionlist'),
-    path('requestion/details/', req_views.requestiondetail, name='requestiondetails'),
+    path('requestion/<int:pk>/', req_views.RequestionDetails.as_view(), name='requestiondetails'),
+    path('requestion/<int:pk>/expired', req_views.ExpiredRequestionDetails.as_view(), name='expiredrequestiondetails'),
+    path('requestion/<int:pk>/fill/', pro_views.ProformaSubmit.as_view(), name='requestionfill'),
     path('business/new', user_views.BusinessRegistration.as_view(), name='newbusiness'),
-    path('business/<pk>', user_views.BusinessDetails.as_view(), name='businessdetails'),
+    path('business/<int:pk>/', user_views.BusinessDetails.as_view(), name='businessdetails'),
     path('', include("proforma.urls")),
 ]
 

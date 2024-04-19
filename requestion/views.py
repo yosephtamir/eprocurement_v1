@@ -1,30 +1,46 @@
 from django.shortcuts import render
 from proforma.models import Proforma
 from django.views.generic import CreateView, DetailView, ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Requestion
+from django.utils import timezone
+
+
+class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
 
 # Create your views here.
 def requestiondetail(request):
-     return render(request, "requestion/requestion_detail.html")
+     
+    return render(request, "requestion/requestion_detail.html")
 
 
 class RequestionList(LoginRequiredMixin, ListView):
     model = Requestion
     context_object_name = 'reqs'
 
-class ProformaSubmit(LoginRequiredMixin, CreateView):
-    login_url = '/login/'
-    redirect_field_name = 'redirect_to'
-    model = Proforma
-    fields = ['requestion', 'user', 'price']
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-    
-    def clean_password(self):
-        data = self.cleaned_data['price']
-        return data
-        #if user and bcrypt.check_password_hash(user.password, form.password.data):
+class RequestionDetails(LoginRequiredMixin, DetailView):
+    model = Requestion
+    context_object_name = "objs"
+    template_name = 'requestion/requestion_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RequestionDetails, self).get_context_data(**kwargs)
+        print(context['objs'].expirey_date)
+        if context['objs'].expirey_date > timezone.now():
+            context['expired'] = False
+        else:
+            context['expired'] = True
+        return context
+
+
+
+class ExpiredRequestionDetails(SuperUserRequiredMixin, DetailView):
+    model = Requestion
+    context_object_name = "objs"
+    template_name = 'requestion/requestion_detail_expired.html'
     

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 class Category(models.Model):
@@ -35,6 +36,9 @@ class Requestion(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse("requestiondetails", kwargs={"pk": self.pk})
 
 class ReqImages(models.Model):
     img = models.ImageField(default="licence.jpg", null=True, upload_to="reqimages")

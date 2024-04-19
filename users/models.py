@@ -23,8 +23,8 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return self.user.username
     
-    def save(self):
-        super().save()
+    def save(self,  *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
         img = Image.open(self.avatar.path)
 
         if img.height > 300 or img.width > 300:
@@ -50,4 +50,4 @@ class BusinessInfo(models.Model):
         return f"{ self.user.username }'s Business"
     
     def get_absolute_url(self):
-        reverse('Blog')
+        return reverse("businessdetails", kwargs={"pk": self.pk})

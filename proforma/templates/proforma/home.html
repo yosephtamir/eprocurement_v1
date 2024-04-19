@@ -1,82 +1,98 @@
 {% extends "proforma/common.html" %}
-{% block content %}
-    {% for post in posts %}
-        <article class="media content-section">
-            <div class="media-body">
-            <div class="article-metadata">
-                <a class="mr-2" href="#">{{ post.author }}</a>
-                <small class="text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
-            </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
-            </div>
-        </article>
-    {% endfor %}
+{% block othercontent %}
 
-    <div class="input-group mb-4">
-        <input type="text" class="form-control" id="advanced-search-input" placeholder="Filter available requestions" />
-        <button class="btn btn-outline-info" id="advanced-search-button" type="button">
-          <i class="fa fa-search"></i>
-        </button>
+  <section id="hero-animated" class="hero-animated d-flex align-items-center">
+    <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+      <img src="/media/home/hero-carousel-3.svg" class="img-fluid animated">
+      <h2>Welcome to <span>Sheger E-procurement</span></h2>
+      <p>Et voluptate esse accusantium accusamus natus reiciendis quidem voluptates similique aut.</p>
+      <div class="d-flex">
+        <p class="text-secondary"><a href="{% url 'requestionlist' %}"><button class="btn btn-outline-info">Check out</button></a>
       </div>
-      <div id="datatable"></div>
-
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/ccMhxvC.png" width="70">
-                        <div class="d-flex flex-column ml-2"><span>Stripe</span><span class="text-black-50">Payment Services</span></div>
-                    </div>
-                    <h6>Get more context on your users with stripe data inside our platform.</h6>
-                    <div class="d-flex justify-content-between install mt-3"><span>Installed 172 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/IpKQiNu.png" width="70">
-                        <div class="d-flex flex-column ml-2"><span>Mailchimp</span><span class="text-black-50">Project Management</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
-                    </div>
-                    <h6>Capture and sync subscribers from your mailchimp platform to ours with ease.</h6>
-                    <div class="d-flex justify-content-between install mt-3"><span>Installed 1234 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/42SqVZd.png" width="70">
-                        <div class="d-flex flex-column ml-2"><span>Dropbox</span><span class="text-black-50">File Management</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
-                    </div>
-                    <h6>Use dropbox to sync your photos to our platform and share it with others.</h6>
-                    <div class="d-flex justify-content-between install mt-3"><span>Installed 1234 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/lXEUCY8.png" width="70">
-                        <div class="d-flex flex-column ml-2"><span>Shopify</span><span class="text-black-50">Ecommerce</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
-                    </div>
-                    <h6>Sell you items with ease with having any website with our free platform</h6>
-                    <div class="d-flex justify-content-between install mt-3"><span>Installed 1234 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/S2In5pz.png" width="70">
-                        <div class="d-flex flex-column ml-2"><span>Atlassian</span><span class="text-black-50">Project management</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
-                    </div>
-                    <h6>Developing products for developers,project managers and architects.</h6>
-                    <div class="d-flex justify-content-between install mt-3"><span>Installed 345 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <div class="d-flex flex-row mb-3"><img src="https://i.imgur.com/S5oK3Oe.png" width="70">
-                        <div class="d-flex flex-column ml-2"><span>Salesforce</span><span class="text-black-50">Project management</span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
-                    </div>
-                    <h6>Developing products for developers,project managers and architects.</h6>
-                    <div class="d-flex justify-content-between install mt-3"><span>Installed 345 times</span><span class="text-primary">View&nbsp;<i class="fa fa-angle-right"></i></span></div>
-                </div>
-            </div>
-        </div>
     </div>
-{% endblock content %}
+  </section>
+            <!-- ======= Call To Action Section ======= -->
+            <section id="cta" class="cta">
+              <div class="container" data-aos="zoom-out">
+        
+                <div class="row g-5">
+        
+                  <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
+                    <h3>Here we can put<em> about sheger city</em> administration </h3>
+                    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a href="#"><button class="btn align-self-start btn-outline-info">Do not miss</button></a>
+                  </div>
+        
+                  <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
+                    <div class="img">
+                      <img src="/media/blog/blog-6.jpg" alt="" class="img-fluid">
+                    </div>
+                  </div>
+        
+                </div>
+        
+              </div>
+            </section><!-- End Call To Action Section -->
+
+    <!-- ======= Recent Blog Posts Section ======= -->
+    <section id="recent-blog-posts" class="recent-blog-posts">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Blog</h2>
+          <p>Recent posts from our Blog</p>
+        </div>
+
+        <div class="row">
+
+          {% for blog in blogs %}
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="post-box">
+              <div class="post-img"><img src="{{ blog.img.url }}" class="img-fluid" alt=""></div>
+              <div class="meta">
+                <span class="post-date">{{ blog.date_posted|date:"F d, Y" }}</span>
+                <span class="post-author"> {{ blog.author.first_name }} </span>
+              </div>
+              <h3 class="post-title"> {{ blog.title }} </h3>
+              <p>{{ blog.content|truncatechars:180 }}</p>
+              <a href="{% url 'blogdetails' pk=blog.id %}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+
+      </div>
+
+    </section><!-- End Recent Blog Posts Section -->
+
+    
+  <!-- ======= On Focus Section ======= -->
+  <section id="onfocus" class="onfocus">
+    <div class="container-fluid p-0" data-aos="fade-up">
+
+      <div class="row g-0">
+        <div class="col-lg-6 video-play position-relative">
+          <a href="https://youtu.be/CmC7giRPuyw" class="glightbox play-btn"></a>
+        </div>
+        <div class="col-lg-6">
+          <div class="content d-flex flex-column justify-content-center h-100">
+            <h3>Voluptatem dignissimos provident quasi corporis</h3>
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>
+            <a href="#" class="read-more align-self-start"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End On Focus Section -->
+{% endblock othercontent %}

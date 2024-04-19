@@ -405,3 +405,9 @@ p {
 b, strong {
     font-weight: 700 !important;
 }
+
+.rounded {
+  width: 400px;
+  height: 300px;
+  object-fit: contain;
+}
