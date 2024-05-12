@@ -30,3 +30,8 @@ class BusinessRegistrationForm(forms.ModelForm):
     class Meta:
         model = BusinessInfo
         fields = ['business_name', 'region', 'subcity', 'TIN', 'renewed_licence']
+
+class BusinessUpdateForm(forms.ModelForm):
+    class Meta:
+        model = BusinessInfo
+        fields = ['business_name', 'region', 'subcity', 'TIN', 'renewed_licence']

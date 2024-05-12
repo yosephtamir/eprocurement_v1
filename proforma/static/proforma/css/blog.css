@@ -610,7 +610,10 @@
     color: var(--color-secondary-light);
     content: "/";
   }
-  
+  .paginator:hover {
+    background-color: var(--color-secondary-light) !important;
+    color: var(--color-secondary-light) !important;
+  }
   @media (max-width: 992px) {
     .breadcrumbs .d-flex {
       display: block !important;

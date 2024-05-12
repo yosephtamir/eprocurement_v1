@@ -44,11 +44,11 @@
   --color-links-hover: #1ec3e0;
 
   /* Primay colors */
-  --color-primary: #3A6073;
+  --color-primary: #000;
   --color-primary-light: #1ec3e0;
   --color-primary-dark: #0189a1;
 
-  --color-primary-rgb: 14, 162, 189;
+  --color-primary-rgb: 0,0,0;
   --color-primary-light-rgb: 30, 195, 224;
   --color-primary-dark-rgb: 1, 137, 161;
       /* Secondary colors */
@@ -88,6 +88,10 @@
     color: var(--color-secondary);
     font-family: var(--font-secondary);
   }
+  .text-red{
+    color: red;
+  }
+  
   
   .hero-animated h2 span {
     color: var(--color-primary);

@@ -4,6 +4,8 @@ from django.views.generic import CreateView, DetailView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Requestion
 from django.utils import timezone
+from django.contrib.auth.models import User
+from proforma.models import Proforma
 
 
 class SuperUserRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
@@ -21,6 +23,7 @@ def requestiondetail(request):
 class RequestionList(LoginRequiredMixin, ListView):
     model = Requestion
     context_object_name = 'reqs'
+    paginate_by = 2
 
 
 class RequestionDetails(LoginRequiredMixin, DetailView):
@@ -43,4 +46,16 @@ class ExpiredRequestionDetails(SuperUserRequiredMixin, DetailView):
     model = Requestion
     context_object_name = "objs"
     template_name = 'requestion/requestion_detail_expired.html'
-    
+    def get_context_data(self, **kwargs):
+        context = super(ExpiredRequestionDetails, self).get_context_data(**kwargs)
+        proformas = Proforma.objects.filter(requestion=context['objs'].id).all()
+        # prolist = []
+        # for pro in proformas:
+        #     if pro.price
+        #     prolist = pro
+        #     pro.price = int(pro.price)
+        #     print(int(pro.price))
+
+        context['proformas'] = proformas
+
+        return context

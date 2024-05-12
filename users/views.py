@@ -8,7 +8,7 @@ from django.views.generic import CreateView, DetailView
 from django.contrib import messages
 from .models import BusinessInfo
 from .forms import (UserRegisterForm, ProfileUpdateForm, 
-                    UserUpdateForm, BusinessRegistrationForm)
+                    UserUpdateForm, BusinessUpdateForm)
 # Create your views here.
 
 def register(request):
@@ -47,6 +47,22 @@ def profile(request):
     }
 
     return render(request, 'users/profile.html', context)
+
+def BusinessUpdate(request):
+    if request.method == 'POST':
+        business = BusinessUpdateForm(request.POST, request.FILES,
+                                      instance=request.businessinfo)
+        if business.is_valid():
+            business.save()
+            messages.success(request, f'Your Business licence has been updated!')
+            return redirect('Blog')
+    else:
+        business = BusinessUpdateForm(request.POST, request.FILES,
+                                      instance=request.businessinfo)
+        context = {
+            'business': business
+        }
+        return render(request, 'users/BusinessUpdate.html', context)
 
 class BusinessDetails(DetailView):
     model = BusinessInfo

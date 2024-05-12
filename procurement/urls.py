@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
+# from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from users import views as user_views
@@ -34,11 +35,12 @@ urlpatterns = [
     path('blog/<int:pk>/', pro_views.BlogDetail.as_view(), name='blogdetails'),
     path('notifications/', pro_views.Notifications_list.as_view(), name='notificationslist'),
     path('requestion/', req_views.RequestionList.as_view(), name='requestionlist'),
-    path('requestion/<int:pk>/', req_views.RequestionDetails.as_view(), name='requestiondetails'),
-    path('requestion/<int:pk>/expired', req_views.ExpiredRequestionDetails.as_view(), name='expiredrequestiondetails'),
-    path('requestion/<int:pk>/fill/', pro_views.ProformaSubmit.as_view(), name='requestionfill'),
+    path('requestion/<pk>/', req_views.RequestionDetails.as_view(), name='requestiondetails'),
+    path('requestion/<pk>/expired', req_views.ExpiredRequestionDetails.as_view(), name='expiredrequestiondetails'),
+    path('requestion/<pk>/fill/', pro_views.ProformaSubmit.as_view(), name='requestionfill'),
     path('business/new', user_views.BusinessRegistration.as_view(), name='newbusiness'),
-    path('business/<int:pk>/', user_views.BusinessDetails.as_view(), name='businessdetails'),
+    path('business/<pk>/', user_views.BusinessDetails.as_view(), name='businessdetails'),
+    re_path('none', pro_views.schema_view),
     path('', include("proforma.urls")),
 ]
 

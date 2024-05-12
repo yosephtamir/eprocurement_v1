@@ -20,6 +20,10 @@
             <h3 class="point">TIN</h3>
             <a id="sublink" href="mailto:{{ current_user.email }}"><h4 class="subtitle">{{ object.TIN }}</h4></a>
         </div>
+        <div class="overview">
+            <h3 class="point">Licence</h3>
+            <img src="{{ object.renewed_licence.url }}" alt="">
+        </div>
     </div>
     </div>
 </article>

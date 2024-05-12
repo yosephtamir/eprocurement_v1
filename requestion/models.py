@@ -2,8 +2,11 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User
+from uuid import uuid4
+
 
 class Category(models.Model):
+    id =   models.CharField(max_length=100, default=uuid4(), primary_key=True)
     name = models.CharField(max_length=100)
     updated_at = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(default=timezone.now)
@@ -20,6 +23,7 @@ class SubCategory(models.Model):
     def __str__(self) -> str:
         return self.name
     
+
 class Requestion(models.Model):
     title = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -29,6 +33,7 @@ class Requestion(models.Model):
     unit = models.CharField(max_length=45)
     quantity = models.FloatField(max_length=10)
     details = models.TextField()
+    sample = models.BooleanField(default=False)
     image = models.ImageField(default="licence.jpg", null=True, upload_to="reqimages")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     updated_at = models.DateTimeField(default=timezone.now)

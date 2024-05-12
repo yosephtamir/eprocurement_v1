@@ -4,6 +4,7 @@ from django.utils import timezone
 from PIL import Image
 from django.contrib.auth.models import User
 from django.urls import reverse
+from uuid import uuid4
 
 class Region(models.Model):
     name = models.CharField(max_length=45)
@@ -36,18 +37,19 @@ class Profile(models.Model):
 
 
 class BusinessInfo(models.Model):
+    id =   models.CharField(max_length=100, default=str(uuid4()), primary_key=True)
     business_name = models.CharField(max_length=100)
     #BusinessInfo should not be deleted if region is deleted
     region = models.ForeignKey(Region, null=True, on_delete=models.SET_NULL)
     subcity = models.CharField(max_length=45)
     TIN = models.CharField(max_length=10)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    renewed_licence = models.ImageField(default="licence.jpg", upload_to="business")
+    renewed_licence = models.ImageField(upload_to="business")
     updated_at = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self) -> str:
-        return f"{ self.user.username }'s Business"
+        return f"{ self.business_name }"
     
     def get_absolute_url(self):
-        return reverse("businessdetails", kwargs={"pk": self.pk})
+        return reverse("businessdetails", kwargs={"pk": str(self.pk)})

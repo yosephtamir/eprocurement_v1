@@ -1,7 +1,12 @@
 from django.contrib import admin
 from .models import Requestion, Category, SubCategory,ReqImages
-# Register your models here.
-admin.site.register(Category)
-admin.site.register(SubCategory)
-admin.site.register(Requestion)
+from import_export.admin import ImportExportModelAdmin
+
+class Checkimpot(ImportExportModelAdmin, admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Category, Checkimpot)
+admin.site.register(SubCategory, Checkimpot)
+admin.site.register(Requestion, Checkimpot)
 admin.site.register(ReqImages)
