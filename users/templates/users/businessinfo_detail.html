@@ -9,20 +9,28 @@
     <h2><a class="article-title" href="#">Business Details</a></h2>
     <div class="about">
         <div class="overview">
+            <h3 class="point">Business Name</h3>
+            <a id="sublink" href=''><h4 class="subtitle">{{ object.business_name }}</h4></a>
+        </div>
+        <div class="overview">
             <h3 class="point">Region</h3>
-            <a id="sublink" href="tel:{{ current_user.phonenumber }}"><h4 class="subtitle">{{ object.region }}</h4></a>
+            <a id="sublink" href=''><h4 class="subtitle">{{ object.region }}</h4></a>
         </div>
         <div class="overview">
             <h3 class="point">Subcity</h3>
-            <a id="sublink" href="mailto:{{ current_user.email }}"><h4 class="subtitle">{{ object.subcity }}</h4></a>
+            <a id="sublink" href=''><h4 class="subtitle">{{ object.subcity }}</h4></a>
         </div>
         <div class="overview">
             <h3 class="point">TIN</h3>
-            <a id="sublink" href="mailto:{{ current_user.email }}"><h4 class="subtitle">{{ object.TIN }}</h4></a>
+            <a id="sublink" href=''><h4 class="subtitle">{{ object.TIN }}</h4></a>
+        </div>
+        <div class="overview">
+            <h3 class="point">Mobile Number</h3>
+            <a id="sublink" href=''><h4 class="subtitle">{{ object.user.profile.mobile }}</h4></a>
         </div>
         <div class="overview">
             <h3 class="point">Licence</h3>
-            <img src="{{ object.renewed_licence.url }}" alt="">
+            <img src="{{ object.renewed_licence.url }}" alt="Renewed Licence">
         </div>
     </div>
     </div>

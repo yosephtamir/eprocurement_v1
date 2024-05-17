@@ -1,0 +1,56 @@
+{% extends "proforma/common.html" %}
+{% block othercontent %}
+<main id="main">
+
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Project Details</h2>
+      </div>
+
+    </div>
+  </div><!-- End Breadcrumbs -->
+  <!-- ======= Blog Details Section ======= -->
+  <section id="blog" class="blog center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row g-5">
+
+        <div class="col-lg-8">
+
+          <article class="blog-details">
+ 
+            <div class="post-img">
+              <img src="{{ project.img.url }}" alt="" class="img-fluid">
+            </div>
+
+            <h2 class="title"> {{ project.title }} </h2>
+
+            <div class="meta-top">
+              <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ project.author.first_name }} {{ project.author.last_name }}</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{ project.updated_at|date:"F d, Y, H:i A" }}</time></a></li>
+              </ul>
+            </div><!-- End meta top -->
+
+            <div class="content">
+              <p>{{ project.content }}</p>
+
+            </div><!-- End post content -->
+
+          </article><!-- End blog post -->
+
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End Blog Details Section -->
+
+  </main><!-- End #main -->
+
+
+
+    
+{% endblock othercontent %}

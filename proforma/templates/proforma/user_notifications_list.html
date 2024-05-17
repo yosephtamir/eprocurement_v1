@@ -1,0 +1,52 @@
+{% extends "proforma/common.html" %}
+{% block content %}
+
+
+<section class="section-50">
+    <div class="container">
+        <h3 class="m-b-50 heading-line">Notifications <i class="fa fa-bell text-muted"></i></h3>
+
+        <div class="notification-ui_dd-content">
+            {% for myproforma in page_obj %}
+            <div class="notification-list notification-list--unread">
+                <div class="notification-list_content">
+                    <div class="notification-list_img">
+                        <img src=" {{ myproforma.requestion.image.url }} " alt="user">
+                    </div>
+                    <div class="notification-list_detail">
+                        <a href=" {% url 'filedrequestiondetails' pk=myproforma.requestion.id %}"><p><b> {{ myproforma.requestion.title }} </b> </a></p>
+                        <p class="text-muted">{{ myproforma.requestion.details|truncatechars:47 }}</p>
+                        <p class="text-muted"><small> {{ myproforma.requestion.expirey_date }} </small></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="col-md-12">
+
+                {% if is_paginated %}
+              
+                    {% if page_obj.has_previous %}
+                      <a class="border-secondary text-secondary btn btn-outline-info mb-4 paginator" href="?page=1">First</a>
+                    {% endif %}
+              
+                    {% for num in page_obj.paginator.page_range %}
+                      {% if page_obj.number == num %}
+                        <a class="bg-secondary border-secondary btn btn-info mb-4 paginator" href="?page={{ num }}">{{ num }}</a>
+                      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <a class="border-secondary text-secondary btn btn-outline-info mb-4 paginator" href="?page={{ num }}">{{ num }}</a>
+                      {% endif %}
+                    {% endfor %}
+              
+                    {% if page_obj.has_next %}
+                      <a class="border-secondary text-secondary btn btn-outline-info mb-4 paginator" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                    {% endif %}
+              
+                  {% endif %}
+              </div>
+
+    </div>
+</section>
+
+
+{% endblock content %}

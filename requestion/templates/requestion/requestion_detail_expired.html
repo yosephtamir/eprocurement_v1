@@ -23,8 +23,9 @@
         <div class="col-md-7">
             <img src="{{ objs.image.url }}" alt="project-image" class="rounded">
             <div class="project-info-box">
-                <p><b>Category:</b> {{ objs.category }}</p>
+                <p><b>Category:</b> {{ objs.subcategory.category }}</p>
                 <p><b>Sub-Category:</b> {{ objs.subcategory }}</p>
+                <p><b>Sample Required:</b> {{ objs.sample }}</p>
             </div><!-- / project-info-box -->
         </div><!-- / column -->
     </div>
@@ -40,21 +41,27 @@
           <thead>
             <tr>
               <th>#</th>
+              <th>Proforma Id</th>
               <th>User</th>
               <th>Email</th>
+              <th>Mobile Number</th>
               <th>Price</th>
               <th>Submitted on</th>
+              <th>Business</th>
             </tr>
           </thead>
           <tbody id="myTable">
           {% for proforma in proformas %}
             <tr>
               <td>{{ forloop.counter }} </td>
+              <td>{{ proforma.id }} </td>
               <td>{{ proforma.user.first_name }} {{ proforma.user.last_name }}</td>
-              <td>{{ proforma.user.email}}</td>
+              <td>{{ proforma.user.email }}</td>
+              <td>{{ proforma.user.profile.mobile }}</td>
               <td>{{ proforma.price }}</td>
               <td>{{ proforma.created_at }}</td>
-            </tr>
+              <td>{{ proforma.business_id }}</td> 
+            </tr> 
           {% endfor %}
           </tbody>
         </table>   
@@ -64,4 +71,5 @@
       </div>
 	</div>
 </div>
+<a href="{% url 'printable_requestion_detail' objs.id %}" target="_blank" class="btn btn-primary">Print this page</a>
 {% endblock content %}

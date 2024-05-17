@@ -464,6 +464,7 @@ section {
 .cta {
     padding: 0;
     margin-bottom: 60px;
+    margin-top: 60px;
   }
   
   .cta .container {
@@ -481,7 +482,7 @@ section {
   .cta .content h3 {
     color: var(--color-secondary);
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 100;
   }
   
   .cta .content h3 em {
@@ -560,7 +561,7 @@ section {
 
 .onfocus .video-play {
   min-height: 400px;
-  background: linear-gradient(rgba(var(--color-black-rgb), 0.4), rgba(var(--color-black-rgb), 0.7)), url("/media/home/onfocus-video-bg.jpg") center center;
+  background: linear-gradient(rgba(var(--color-black-rgb), 0.4), rgba(var(--color-black-rgb), 0.7)), url("/media/home/Ashenafi_Chemeda.jpg") center center;
   background-size: cover;
 }
 
@@ -710,4 +711,36 @@ section {
     transform: scale(1, 1);
     opacity: 0;
   }
+}
+
+/* contact us */
+.contact-container {
+  background-color: #111; /* Dark grey container */
+  padding: 30px;
+  border-radius: 8px;
+}
+h2 {
+  color: #e63946; /* Red headings */
+  margin-bottom: 10px;
+}
+.contact-info p {
+  margin-bottom: 10px;
+}
+.contact-info strong {
+  color: #e63946; /* Red for strong text */
+}
+.map-container {
+  height: 400px;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }

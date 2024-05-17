@@ -75,7 +75,8 @@
 .hero-animated {
     width: 100%;
     min-height: 50vh;
-    background: url("/media/home/hero-bg.png") center center;
+    /* <a href="https://www.freepik.com/free-photo/3d-render-modern-network-communications-low-poly-plexus-design_11246981.htm#query=black%20technology%20background&position=12&from_view=keyword&track=ais_user&uuid=16bbd9c9-622c-4707-aed6-02361c8d63e8">Image by kjpargeter on Freepik</a> */
+    background: url("/media/home/3d-render-modern-network-communications-low-poly-plexus-design.jpg") center center;
     background-size: cover;
     position: relative;
     padding: 120px 0 60px;
@@ -92,16 +93,45 @@
     color: red;
   }
   
-  
+  .landing_border {
+    border-bottom: 10px red solid;
+  }
+
+  .text-black {
+    color: #000;
+  }
   .hero-animated h2 span {
     color: var(--color-primary);
   }
-  
+
+
+/* Transition */
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-300%);
+  width: 0;
+  overflow: hidden;
+}
+
+.slide-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  width: 100%;
+}
+
+
   .hero-animated p {
-    color: rgba(var(--color-secondary-rgb), 0.8);
+    color: #17a2b8!important;
     margin: 0 0 30px 0;
     font-size: 20px;
     font-weight: 400;
+    background-color: rgb(0 123 255 / 8%);
+    margin: 5px;
+    padding: 4px;
+    border-radius: 10px;
+
   }
   
   .hero-animated .animated {
@@ -464,8 +494,10 @@ section {
 .cta {
     padding: 0;
     margin-bottom: 60px;
+    margin-top: 60px;
+
   }
-  
+
   .cta .container {
     padding: 80px;
     background: rgba(var(--color-secondary-rgb), 0.1);
@@ -481,7 +513,7 @@ section {
   .cta .content h3 {
     color: var(--color-secondary);
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 100;
   }
   
   .cta .content h3 em {
@@ -560,10 +592,13 @@ section {
 
 .onfocus .video-play {
   min-height: 400px;
-  background: linear-gradient(rgba(var(--color-black-rgb), 0.4), rgba(var(--color-black-rgb), 0.7)), url("/media/home/onfocus-video-bg.jpg") center center;
+  background: linear-gradient(rgba(var(--color-black-rgb), 0.4), rgba(var(--color-black-rgb), 0.7)), url("/media/home/Ashenafi_Chemeda.jpg") center center;
   background-size: cover;
 }
 
+.container-fluid {
+  background-color: #50585f;
+}
 .onfocus .content {
   background: linear-gradient(rgba(var(--color-secondary-rgb), 0.5), rgba(var(--color-secondary-rgb), 0.8)), url("/media/home/onfocus-content-bg.jpg") center center;
   background-size: cover;
@@ -710,4 +745,40 @@ section {
     transform: scale(1, 1);
     opacity: 0;
   }
+}
+
+/* contact us */
+
+.contact-container {
+  background-color: #111; /* Dark grey container */
+  padding: 20px;
+  border-radius: 8px;
+}
+h2 {
+  color: #e63946; /* Red headings */
+  margin-bottom: 10px;
+}
+.contact-info p {
+  margin-bottom: 10px;
+}
+.contact-info strong {
+  color: #e63946; /* Red for strong text */
+}
+.map-container {
+  height: 400px;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.contactus {
+  margin-bottom: 40px;
 }

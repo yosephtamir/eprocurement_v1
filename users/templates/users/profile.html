@@ -1,4 +1,4 @@
-{% extends "proforma/common2.html" %}
+{% extends "proforma/common.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="content-section">
@@ -7,7 +7,10 @@
 		<div class="media-body">
 			<h2 class="account-heading"> {{ user.first_name }} {{user.last_name }} </h2>
 			<p class="text-secondary"> {{ user.email }} </p>
-      <p class="text-secondary"><a href="{% url 'newbusiness' %}"><button class="btn btn-outline-info">Add a Business</button></a></p>
+            <div class="row">
+                <p class="text-secondary mr-2"><a href="{% url 'newbusiness' %}"><button class="btn btn-outline-info">Add a Business</button></a></p>
+                <p class="text-secondary"><a href="{% url 'password_reset' %}"><button class="btn btn-outline-info">Change Password</button></a></p>
+            </div>
 		</div>
 	</div>
 </div>

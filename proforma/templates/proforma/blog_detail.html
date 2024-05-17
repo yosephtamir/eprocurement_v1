@@ -31,7 +31,7 @@
             <div class="meta-top">
               <ul>
                 <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">{{ blog.author.first_name }} {{ blog.author.last_name }}</a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">{{ blog.date_posted|date:"F d, Y, H:i A" }}</time></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">{{ blog.updated_at|date:"F d, Y, H:i A" }}</time></a></li>
               </ul>
             </div><!-- End meta top -->
 

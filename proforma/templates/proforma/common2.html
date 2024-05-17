@@ -2,13 +2,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if title %}
-    <title>Precurement - {{ title }}</title>
-    {% else %}
-        <title>Precurement</title>
-    {% endif %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description=" content="Sheger E-procurement is an innovative platform designed to make the process of procurement easier than ever">
+  <meta name="keywords" content="procurement, E-procurement, int, Inclusive Technologies, int Ethiopia">
+  <meta name="author" content="Yoseph Tamirat, Mahilet Seife, Nagasa Fufa, inclusive Technologies">
+  <link href="{% static 'proforma/images/Sheger_City_logo.png' %}" rel="icon thumbnail">
+  {% if title %}
+  <title>Sheger E-Precurement - {{ title }}</title>
+  {% else %}
+      <title>Sheger E-Precurement</title>
+  {% endif %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'proforma/css/main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'proforma/css/footer.css' %}">
@@ -37,7 +41,7 @@
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'Blog' %}">Home</a>
               <a class="nav-item nav-link" href="{% url 'Blog' %}">Blog</a>
-              <a class="nav-item nav-link" href="{% url 'requestionlist' %}">Requestions</a>
+              <a class="nav-item nav-link" href="{% url 'requestionlist' %}">Active Requests</a>
               <a class="nav-item nav-link" href="{% url 'Proforma-About' %}">About</a>
               {% if user.is_superuser %}
                 <a class="nav-item nav-link" href="{% url 'notificationslist' %}">Notifications</a>

@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Printable Requestion Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            color: red;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 800;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-md-5, .col-md-7 {
+            padding: 5px;
+        }
+        .col-md-5 {
+            display: flex;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 40%;
+            width: 40%;
+        }
+        .col-md-7 {
+            display: flex;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 55%;
+            width: 55%;
+        }
+        .project-info-box {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .table {
+            width: 40%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .table thead {
+            background-color: #f2f2f2;
+        }
+        img.rounded {
+        width: 400px;
+        height: 300px;
+        object-fit: contain;
+        }
+        .seal {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Sheger Guje Subcity E-procurement</h1>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="project-info-box">
+                    <h5>Requestion Details</h5>
+                    <p>{{ objs.details }}</p>
+                </div>
+                <div class="project-info-box">
+                    <p><b>Title:</b> {{ objs.title }}</p>
+                    <p><b>Location:</b> {{ objs.location }}</p>
+                    <p><b>Unit:</b> {{ objs.unit }}</p>
+                    <p><b>Quantity:</b> {{ objs.quantity }}</p>
+                    <p><b>Uploaded at:</b> {{ objs.updated_at|date:"F d, Y" }}</p>
+                    <p><b>Expires on:</b> {{ objs.expirey_date|date:"F d, Y" }}</p>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <img src="{{ objs.image.url }}" alt="project-image" class="rounded">
+                <div class="project-info-box">
+                    <p><b>Category:</b> {{ objs.subcategory.category }}</p>
+                    <p><b>Sub-Category:</b> {{ objs.subcategory }}</p>
+                    <p><b>Sample Required:</b> {{ objs.sample }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Proforma Id</th>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Mobile Number</th>
+                            <th>Price</th>
+                            <th>Submitted on</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for proforma in proformas %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ proforma.id }}</td>
+                                <td>{{ proforma.user.first_name }} {{ proforma.user.last_name }}</td>
+                                <td>{{ proforma.user.email }}</td>
+                                <td>{{ proforma.user.profile.mobile }}</td>
+                                <td>{{ proforma.price }}</td>
+                                <td>{{ proforma.created_at }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

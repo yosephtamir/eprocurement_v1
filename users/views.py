@@ -43,11 +43,14 @@ def profile(request):
     context = {
         'u_form': u_form,
         'p_form': p_form,
-        'mybusiness': mybusiness
+        'mybusiness': mybusiness,
+        'profile': True,
+        'title': f"{request.user.first_name}"
     }
 
     return render(request, 'users/profile.html', context)
 
+@login_required
 def BusinessUpdate(request):
     if request.method == 'POST':
         business = BusinessUpdateForm(request.POST, request.FILES,
@@ -60,7 +63,7 @@ def BusinessUpdate(request):
         business = BusinessUpdateForm(request.POST, request.FILES,
                                       instance=request.businessinfo)
         context = {
-            'business': business
+            'business': business,
         }
         return render(request, 'users/BusinessUpdate.html', context)
 

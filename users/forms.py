@@ -24,7 +24,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['avatar', 'Region']
+        fields = ['avatar', 'Region', 'mobile', 'phone']
 
 class BusinessRegistrationForm(forms.ModelForm):
     class Meta:

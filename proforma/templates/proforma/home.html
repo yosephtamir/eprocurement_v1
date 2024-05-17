@@ -1,98 +1,113 @@
 {% extends "proforma/common.html" %}
 {% block othercontent %}
 
-  <section id="hero-animated" class="hero-animated d-flex align-items-center">
+  <section id="hero-animated" class="hero-animated d-flex align-items-center mb-10">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
       <img src="/media/home/hero-carousel-3.svg" class="img-fluid animated">
-      <h2 class="text-danger">Welcome to <span>Gefersa Guje Sub-City</span></h2>
-      <p>On behalf of our vision to establish our Sub-City as the premier Event Innovation and Technology Hub in East Africa by 2030, we are spearheading a revolutionary transformation infused with technological advancements. E-procurement stands as a cornerstone of our progress, symbolizing our commitment to leveraging cutting-edge solutions to propel our sub-city forward.</p>
+      <h2 id="text-container" class="text-light hidden mb-3">Welcome to <span class="text-light landing_border">Gefersa Guje Sub-City</span></h2>
+      <p >On behalf of our vision to establish our Sub-City as the premier Event Innovation and Technology Hub in East Africa by 2030, we are spearheading a revolutionary transformation infused with technological advancements. E-procurement stands as a cornerstone of our progress, symbolizing our commitment to leveraging cutting-edge solutions to propel our sub-city forward.</p>
       <div class="d-flex align-self-end">
         <p class="text-secondary"><a href="{% url 'requestionlist' %}"><button class="btn btn-outline-info">Check out</button></a>
       </div>
     </div>
   </section>
             <!-- ======= Call To Action Section ======= -->
-            <section id="cta" class="cta">
-              <div class="container" data-aos="zoom-out">
-        
-                <div class="row g-5">
-        
-                  <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
-                    <h3 class="text-danger">Here we can put<em> about sheger city</em> administration </h3>
-                    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <a href="#"><button class="btn align-self-start btn-outline-info">Do not miss</button></a>
-                  </div>
-        
-                  <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
-                    <div class="img">
-                      <img src="/media/blog/blog-6.jpg" alt="" class="img-fluid">
-                    </div>
-                  </div>
-        
-                </div>
-        
-              </div>
-            </section><!-- End Call To Action Section -->
+  <section id="cta" class="cta mt-12">
+    <div class="container" data-aos="zoom-out">
 
-    <!-- ======= Recent Blog Posts Section ======= -->
-    <section id="recent-blog-posts" class="recent-blog-posts">
+      <div class="row g-5">
 
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2 class="text-danger">Projects and Initiatives</h2>
-          <p>On going projects and initiatives</p>
+        <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
+          <h3 class="text-danger">The Sub-City's <em> Profile</em></h3>
+          <p>Gafarsa Guje Sub-City, led by Mr. Ashenafi Chemeda, encompasses 17,130 hectares with a population of 271,565. It's a thriving community blending urban dynamism with rural tranquility, prioritizing sustainable development and inclusive governance for a prosperous future.</p>
+          <!-- <a href="#"><button class="btn align-self-start btn-outline-info">Do not miss</button></a> -->
         </div>
 
-        <div class="row">
-
-          {% for blog in blogs %}
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="post-box">
-              <div class="post-img"><img src="{{ blog.img.url }}" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date">{{ blog.date_posted|date:"F d, Y" }}</span>
-                <span class="post-author"> {{ blog.author.first_name }} </span>
-              </div>
-              <h3 class="post-title"> {{ blog.title }} </h3>
-              <p>{{ blog.content|truncatechars:180 }}</p>
-              <a href="{% url 'blogdetails' pk=blog.id %}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
+        <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
+          <div class="img">
+            <img src="/media/projects/GefersaR.jpg" alt="" class="img-fluid">
           </div>
-
-          {% endfor %}
         </div>
 
       </div>
 
-    </section><!-- End Recent Blog Posts Section -->
+    </div>
+  </section><!-- End Call To Action Section -->
 
-    
+    <!-- ======= Recent Blog Posts Section ======= -->
+  <section id="recent-blog-posts" class="recent-blog-posts">
+    <div class="container" data-aos="fade-up">
+      <div class="section-header">
+        <h2 class="text-danger">Projects and Initiatives</h2>
+        <p>On going projects and initiatives</p>
+      </div>
+      <div class="row">
+        {% for project in projects %}
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="post-box">
+            <div class="post-img"><img src="{{ project.img.url }}" class="img-fluid" alt=""></div>
+            <div class="meta">
+              <span class="post-date">{{ project.updated_at|date:"F d, Y" }}</span>
+              <span class="post-author"> {{ project.author.first_name }} </span>
+            </div>
+            <h3 class="post-title"> {{ project.title }} </h3>
+            <p>{{ project.content|truncatechars:180 }}</p>
+            <a href="{% url 'projectdetails' pk=project.id %}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section><!-- End Recent Blog Posts Section -->
+
   <!-- ======= On Focus Section ======= -->
   <section id="onfocus" class="onfocus">
     <div class="container-fluid p-0" data-aos="fade-up">
-
       <div class="row g-0">
         <div class="col-lg-6 video-play position-relative">
           <a href="https://youtu.be/CmC7giRPuyw" class="glightbox play-btn"></a>
         </div>
         <div class="col-lg-6">
           <div class="content d-flex flex-column justify-content-center h-100">
-            <h3>Voluptatem dignissimos provident quasi corporis</h3>
+            <h3>Governor's Message</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              As Governor of Gafarsa Guje Sub-City, it is my honor and privilege to serve this vibrant and diverse community. Our sub-city, home to 271,565 residents and spanning 17,130 hectares, is on a remarkable journey towards becoming a premier hub for innovation and sustainability in East Africa.
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bi bi-check-circle"></i> Our commitment to sustainable development and inclusive governance underpins every initiative we undertake. From pioneering agricultural advancements and eco-friendly urban planning to fostering technological innovation, we are dedicated to enhancing the quality of life for all our residents.</li>
+              <li><i class="bi bi-check-circle"></i> I am deeply grateful for the hard work and dedication of our community members, local businesses, and public servants. Together, we are building a future that balances growth with environmental stewardship, ensuring prosperity for current and future generations.</li>
+              <li><i class="bi bi-check-circle"></i> Thank you for your continued support and active participation in our shared vision. Together, we will achieve great things and make Gafarsa Guje Sub-City a beacon of progress and opportunity.</li>
             </ul>
-            <a href="#" class="read-more align-self-start"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            <a href="#" class="read-more align-self-start"><span>Contact</span><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>
 
     </div>
   </section><!-- End On Focus Section -->
+  <section class="d-flex contact-section">
+  <div class="container my-5">
+    <div class="contact-container">
+      <div class="row">
+        <div class="col-md-6 contact-info">
+          <h2 class="contactus">Contact Us</h2>
+          <p><strong>Address:</strong> Ethiopia, Oromia, Shaggar city Gafarsa Guje Subcity</p>
+          <p><strong>Phone:</strong> +2519 30 84 5323</p>
+          <p><strong>Email:</strong> yosephtamir@hightier.com</p>
+        </div>
+        <div class="col-md-6">
+          <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.2924099870584!2d38.60320637581445!3d9.037068491024602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164c790063c1b28d%3A0x8c313fe9a8a1c766!2sGuje%20subcity!5e0!3m2!1sen!2set!4v1715976840400!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <script>
+    $(document).ready(function() {
+  // When the document is ready, show the hidden text with slide-in animation
+  $('#text-container').addClass('slide-in');
+});
+  </script>
 {% endblock othercontent %}
