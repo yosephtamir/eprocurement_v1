@@ -1,8 +1,11 @@
+#!/usr/bin/python3
+"""Other non default user related models script"""
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from PIL import Image #for image processing
+
 
 
 class Region(models.Model):
@@ -21,14 +24,14 @@ class Profile(models.Model):
     mobile = models.CharField(max_length=20)
     phone = models.CharField(max_length=20)
     #BusinessInfo should not be deleted if region is deleted
-    Region = models.ForeignKey(Region, default=None, null=True, on_delete=models.SET_NULL)
+    Region = models.ForeignKey(Region, default=None,
+                               null=True, on_delete=models.SET_NULL)
     updated_at = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True) #can not be modified
 
-    def __str__(self) -> str:
-        return self.user.username
     
     def save(self,  *args, **kwargs):
+        '''used for processing image before saving to the database'''
         super(Profile, self).save(*args, **kwargs)
         img = Image.open(self.avatar.path)
 
@@ -47,7 +50,8 @@ class BusinessInfo(models.Model):
     region = models.ForeignKey(Region, null=True, on_delete=models.SET_NULL)
     subcity = models.CharField(max_length=45)
     TIN = models.CharField(max_length=10)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='business')
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name='business')
     renewed_licence = models.ImageField(upload_to="business")
     updated_at = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True) #can not be modified

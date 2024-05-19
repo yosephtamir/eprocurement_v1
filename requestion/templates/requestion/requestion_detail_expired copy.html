@@ -15,8 +15,6 @@
                 <p><b>Quantity:</b> {{ objs.quantity }} </p>
                 <p><b>Uploaaded at:</b> {{ objs.updated_at|date:"F d, Y"}} </p>
                 <p><b>Expires on:</b> {{ objs.expirey_date|date:"F d, Y" }}</p>
-                <p><b>Requestion:</b> {{ objs.id }} </p>
-
             </div><!-- / project-info-box -->
 
 <!-- / project-info-box -->
@@ -45,6 +43,8 @@
               <th>#</th>
               <th>Proforma Id</th>
               <th>User</th>
+              <th>Email</th>
+              <th>Mobile Number</th>
               <th>Price</th>
               <th>Submitted on</th>
               <th>Business</th>
@@ -55,7 +55,7 @@
             <tr>
               <td>{{ forloop.counter }} </td>
               <td>{{ proforma.id }} </td>
-              <td>{{ proforma.user_id }}</td>
+              <td>{{ proforma.userid }}</td>
               <td>{{ proforma.price }}</td>
               <td>{{ proforma.created_at }}</td>
               <td>{{ proforma.business_id }}</td> 

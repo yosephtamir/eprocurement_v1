@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 #Available Views
@@ -26,6 +26,8 @@ from proforma import views as pro_views
 from projects import views as project_views
 
 urlpatterns = [
+    path('', pro_views.home, name="Home"),
+    path('about/', pro_views.about, name="About"),
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
@@ -70,7 +72,6 @@ urlpatterns = [
     path('business/new', user_views.BusinessRegistration.as_view(), name='newbusiness'),
     path('business/<pk>/', user_views.BusinessDetails.as_view(), name='businessdetails'),
     re_path('none', pro_views.schema_view),
-    path('', include("proforma.urls")),
 ]
 
 

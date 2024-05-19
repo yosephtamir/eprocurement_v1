@@ -153,7 +153,7 @@ class ProformaSubmit(LoginRequiredMixin, CreateView):
         # Check if the user has already submitted a proforma with the same business
         if Proforma.objects.filter(user=user, business=business, requestion=requestion).exists():
             messages.warning(self.request, 'A user cannot apply twice with the same business license')
-            return redirect('Blog')  # Replace 'previous_page' with the appropriate URL name
+            return redirect('Home')  # Replace 'previous_page' with the appropriate URL name
 
         # Set the user and requestion for the proforma
         form.instance.user = user

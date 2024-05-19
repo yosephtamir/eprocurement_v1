@@ -83,7 +83,6 @@ class ExpiredRequestionDetails(SuperUserRequiredMixin, DetailView):
         context = super(ExpiredRequestionDetails, self).get_context_data(**kwargs) 
         proformas = Proforma.objects.filter(requestion=context['objs'].id).all().values()
         sorted_proformas = sorted(proformas, key=lambda i: i['price'])
-
         context['proformas'] = sorted_proformas
 
         return context

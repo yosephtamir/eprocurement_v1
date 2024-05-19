@@ -7,7 +7,7 @@ from uuid import uuid4
 
 class Category(models.Model):
     '''A catagory model used to specify a requests catagory information'''
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     updated_at = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True) #can not be modified
 
@@ -16,7 +16,7 @@ class Category(models.Model):
 
 class SubCategory(models.Model):
     '''More detailed specification of the catagory model'''
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='subcatagories')
     updated_at = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True) #can not be modified

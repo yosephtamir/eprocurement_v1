@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+'''Applications associated to the user'''
 from django.apps import AppConfig
 
 

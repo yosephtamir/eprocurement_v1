@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""A proforma/procurement model"""
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -9,7 +11,7 @@ from django_cryptography.fields import encrypt
 
 
 class Post(models.Model):
-    '''A model used for blog updates'''
+    '''A model used for blog posts'''
     title = models.CharField(max_length=100)
     content = models.TextField()
     img = models.ImageField(default="blog.jpg", upload_to="blog")
