@@ -5,7 +5,7 @@ body {
   }
 
   header {
-    margin-bottom:100px;
+    margin-bottom: 75px;
   }
   h1, h2, h3, h4, h5, h6 {
     color: #444444;
@@ -33,6 +33,12 @@ body {
   .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
   }
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M3.646 3.646a.5.5 0 011.061-.061L8 6.879l3.293-3.294a.5.5 0 11.707.707L8.707 7.586l3.293 3.293a.5.5 0 11-.707.707L8 8.293l-3.293 3.293a.5.5 0 11-.707-.707L7.293 7.586 3.646 3.646a.5.5 0 010-.707z' fill='rgba%28255, 255, 255, 1%29'/%3E%3C/svg%3E");
+}
   
   .content-section {
     background: #ffffff;
@@ -92,6 +98,10 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 100%;
+  }
+
+  .logo_img:hover {
+    transform: scale(1.2);
   }
 
   #reqlistimage {
